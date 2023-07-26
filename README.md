@@ -1,5 +1,6 @@
 ---
 license: creativeml-openrail-m
+duplicated_from: stabilityai/stable-diffusion-xl-base-1.0
 ---
 # SD-XL 1.0-base Model Card
 ![row01](01.png)
