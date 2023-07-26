@@ -8,23 +8,25 @@ license: creativeml-openrail-m
 
 ![pipeline](pipeline.png)
 
-SDXL consists of a mixture-of-experts pipeline for latent diffusion: 
+[SDXL](https://arxiv.org/abs/2307.01952) consists of a mixture-of-experts pipeline for latent diffusion: 
 In a first step, the base model is used to generate (noisy) latents, 
-which are then further processed with a refinement model (available here: TODO) specialized for the final denoising steps.
+which are then further processed with a refinement model (available here: https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/) specialized for the final denoising steps.
 Note that the base model can be used as a standalone module.
 
-Alternatively, we can use a two-step pipeline as follows: 
+Alternatively, we can use a two-stage pipeline as follows: 
 First, the base model is used to generate latents of the desired output size. 
 In the second step, we use a specialized high-resolution model and apply a technique called SDEdit (https://arxiv.org/abs/2108.01073, also known as "img2img") 
-to the latents generated in the first step, using the same prompt. Note that this technique is slightly slower than the first one, as it requires more function evaluations.
+to the latents generated in the first step, using the same prompt. This technique is slightly slower than the first one, as it requires more function evaluations.
+
+Source code is available at https://github.com/Stability-AI/generative-models .
 
 ### Model Description
 
 - **Developed by:** Stability AI
 - **Model type:** Diffusion-based text-to-image generative model
-- **License:** [OpenRAIL-M CreativeML](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/blob/main/LICENSE.md)
+- **License:** [CreativeML Open RAIL++-M License](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/blob/main/LICENSE.md)
 - **Model Description:** This is a model that can be used to generate and modify images based on text prompts. It is a [Latent Diffusion Model](https://arxiv.org/abs/2112.10752) that uses two fixed, pretrained text encoders ([OpenCLIP-ViT/G](https://github.com/mlfoundations/open_clip) and [CLIP-ViT/L](https://github.com/openai/CLIP/tree/main)).
-- **Resources for more information:** [GitHub Repository](https://github.com/Stability-AI/generative-models) [SDXL paper on arXiv](https://arxiv.org/abs/2307.01952).
+- **Resources for more information:** Check out our [GitHub Repository](https://github.com/Stability-AI/generative-models) and the [SDXL report on arXiv](https://arxiv.org/abs/2307.01952).
 
 ### Model Sources
 
