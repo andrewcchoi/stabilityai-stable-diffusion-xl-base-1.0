@@ -11,7 +11,7 @@ tags:
 
 ![pipeline](pipeline.png)
 
-[SDXL](https://arxiv.org/abs/2307.01952) consists of a mixture-of-experts pipeline for latent diffusion: 
+[SDXL](https://arxiv.org/abs/2307.01952) consists of an [ensemble of experts](https://arxiv.org/abs/2211.01324) pipeline for latent diffusion: 
 In a first step, the base model is used to generate (noisy) latents, 
 which are then further processed with a refinement model (available here: https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/) specialized for the final denoising steps.
 Note that the base model can be used as a standalone module.
