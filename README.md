@@ -88,6 +88,57 @@ instead of `.to("cuda")`:
 ```
 
 
+### Optimum
+[Optimum](https://github.com/huggingface/optimum) provides a Stable Diffusion pipeline compatible with both [OpenVINO](https://docs.openvino.ai/latest/index.html) and [ONNX Runtime](https://onnxruntime.ai/).
+
+#### OpenVINO
+
+To install Optimum with the dependencies required for OpenVINO :
+
+```bash
+pip install optimum[openvino]
+```
+
+To load an OpenVINO model and run inference with OpenVINO Runtime, you need to replace `StableDiffusionXLPipeline` with Optimum `OVStableDiffusionXLPipeline`. In case you want to load a PyTorch model and convert it to the OpenVINO format on-the-fly, you can set `export=True`.
+
+```diff
+- from diffusers import StableDiffusionPipeline
++ from optimum.intel import OVStableDiffusionPipeline
+
+model_id = "stabilityai/stable-diffusion-xl-base-1.0"
+- pipeline = StableDiffusionPipeline.from_pretrained(model_id)
++ pipeline = OVStableDiffusionPipeline.from_pretrained(model_id)
+prompt = "A majestic lion jumping from a big stone at night"
+image = pipeline(prompt).images[0]
+```
+
+You can find more examples (such as static reshaping and model compilation) in optimum [documentation](https://huggingface.co/docs/optimum/main/en/intel/inference#stable-diffusion-xl).
+
+
+#### ONNX
+
+To install Optimum with the dependencies required for ONNX Runtime inference :
+
+```bash
+pip install optimum[onnxruntime]
+```
+
+To load an ONNX model and run inference with ONNX Runtime, you need to replace `StableDiffusionXLPipeline` with Optimum `ORTStableDiffusionXLPipeline`. In case you want to load a PyTorch model and convert it to the ONNX format on-the-fly, you can set `export=True`.
+
+```diff
+- from diffusers import StableDiffusionPipeline
++ from optimum.onnxruntime import ORTStableDiffusionPipeline
+
+model_id = "stabilityai/stable-diffusion-xl-base-1.0"
+- pipeline = StableDiffusionPipeline.from_pretrained(model_id)
++ pipeline = ORTStableDiffusionPipeline.from_pretrained(model_id)
+prompt = "A majestic lion jumping from a big stone at night"
+image = pipeline(prompt).images[0]
+```
+
+You can find more examples in optimum [documentation](https://huggingface.co/docs/optimum/main/en/onnxruntime/usage_guides/models#stable-diffusion-xl).
+
+
 ## Uses
 
 ### Direct Use
