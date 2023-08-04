@@ -2,6 +2,7 @@
   "_class_name": "StableDiffusionXLPipeline",
   "_diffusers_version": "0.19.0.dev0",
   "force_zeros_for_empty_prompt": true,
+  "add_watermarker": true,
   "scheduler": [
     "diffusers",
     "EulerDiscreteScheduler"
